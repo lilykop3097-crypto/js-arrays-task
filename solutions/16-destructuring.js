@@ -6,5 +6,26 @@ const getDistance = ([x1, y1], [x2, y2]) => {
   };
 
 // BEGIN
+export function getTheNearestLocation(locations, point){
+  if (locations.length === 0) {
+    return null;
+  }
+
+  let minDistance = Infinity;
+  let nearestLocation = null;
+
+  for (const location of locations) {
+    const [, coordinates] = location;
+    const currentDistance = getDistance(coordinates, point);
+    if (currentDistance < minDistance) {
+      minDistance = currentDistance;
+      nearestLocation = location;
+    }
+  }
+
+  return nearestLocation;
+};
+
+
 
 // END
